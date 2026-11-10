@@ -234,39 +234,6 @@ header nav {
   }
 }
 
-@media (max-width: 768px) {
-  .niveles-container,
-  .jugadores-container {
-    padding: 0 20px;
-  }
-  .nivel {
-    flex-direction: column;
-    align-items: center;
-  }
-  .perfil .nivel {
-    flex-direction: column;
-    align-items: center;
-  }
-  h2 {
-    text-align: center;
-  }
-  header nav {
-    flex-direction: column;
-    height: auto;
-    padding: 10px 20px;
-  }
-  .nav-left {
-    gap: 30px;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .logo-img {
-    height: 50px;
-  }
-  .nav-item {
-    font-size: 1em;
-  }
-}
 /* ===========================
    Imágenes laterales
 =========================== */
@@ -319,4 +286,102 @@ header nav {
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
+}
+
+/* ===========================
+   Móvil: mismo diseño que PC, en pequeño
+=========================== */
+@media (max-width: 768px) {
+
+  /* Barra compacta, en fila */
+  body {
+    padding-top: 52px;
+  }
+  header nav {
+    height: 52px;
+    padding: 0 10px;
+    font-size: 1em;
+    overflow-x: auto;          /* por si en pantallas muy estrechas no caben */
+    white-space: nowrap;
+  }
+  .nav-left {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo-img {
+    height: 40px;
+  }
+  .nav-item {
+    font-size: 0.8em;
+  }
+
+  /* Listas: mismo formato que en PC (miniatura a la izquierda, info a la derecha) */
+  .niveles-container,
+  .jugadores-container {
+    padding: 0 8px;
+    margin-top: 8px;
+  }
+  .panel-niveles,
+  .panel-jugadores {
+    padding: 8px 0;
+    gap: 12px;
+  }
+  .nivel {
+    padding: 8px;
+    gap: 10px;
+  }
+  .thumb {
+    width: 120px;
+    height: 68px;
+    border-radius: 6px;
+  }
+  .demon-info h2 {
+    font-size: 1rem;
+    text-align: left;
+  }
+  .demon-info p {
+    font-size: 0.8rem;
+    margin: 4px 0 0;
+  }
+
+  /* index.html */
+  .inicio-container h1 {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  /* nivel.html */
+  #nivel-container {
+    padding: 8px !important;
+  }
+  .nivel-preview {
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    margin: 12px auto !important;
+  }
+  .nivel-bar {
+    flex-wrap: wrap;
+    gap: 4px 12px;
+    padding: 10px 12px !important;
+  }
+  .nivel-bar h2 {
+    font-size: 1.3em !important;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* statsviewer.html */
+  .main-container {
+    height: calc(100vh - 52px) !important;
+  }
+  .ranking {
+    height: 35% !important;
+    flex-shrink: 0;
+  }
+  .perfil-container {
+    min-height: 0;
+    padding: 12px !important;
+    text-align: left;
+  }
 }
