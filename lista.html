@@ -31,6 +31,22 @@
 <script>
 const panel = document.getElementById('panel-niveles');
 
+// Crea enlaces al perfil de statsviewer para cada verificador
+function verificadoresLinks(texto) {
+  const cont = document.createElement('span');
+  const nombres = (texto || '').split(',').map(s => s.trim()).filter(Boolean);
+  nombres.forEach((n, i) => {
+    const a = document.createElement('a');
+    a.href = `statsviewer.html?jugador=${encodeURIComponent(n)}`;
+    a.textContent = n;
+    a.style.color = 'inherit';
+    a.style.textDecoration = 'underline';
+    cont.appendChild(a);
+    if (i < nombres.length - 1) cont.appendChild(document.createTextNode(', '));
+  });
+  return cont;
+}
+
 fetch('niveles.csv')
   .then(response => response.text())
   .then(csv => {
@@ -63,8 +79,11 @@ fetch('niveles.csv')
       linkTitulo.textContent = nivel.titulo;
       titulo.appendChild(linkTitulo);
 
+      // Stats con el verificador clicable
       const stats = document.createElement('p');
-      stats.textContent = `Verificador: ${nivel.stats.Verificador} | Ranchopoints: ${nivel.stats.Ranchopoints}`;
+      stats.appendChild(document.createTextNode('Verificador: '));
+      stats.appendChild(verificadoresLinks(nivel.stats.Verificador));
+      stats.appendChild(document.createTextNode(` | Ranchopoints: ${nivel.stats.Ranchopoints}`));
 
       infoDiv.appendChild(titulo);
       infoDiv.appendChild(stats);

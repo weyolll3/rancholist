@@ -69,13 +69,34 @@
 
   @media (max-width: 768px) {
     .main-container {
-      flex-direction: column;
+      flex-direction: row;          /* lista a la izquierda, perfil a la derecha */
+      height: calc(100dvh - 70px);
     }
     .ranking {
-      width: 100%;
-      height: 200px;
-      border-right: none;
-      border-bottom: 1px solid #ddd;
+      width: 32%;                   /* lista estrecha */
+      min-width: 110px;
+      height: auto;
+      padding: 6px;
+      border-right: 1px solid #ddd;
+      border-bottom: none;
+      font-size: 0.85em;
+    }
+    .ranking .jugador {
+      padding: 8px 4px;
+      word-break: break-word;
+    }
+    .ranking .jugador span {
+      display: block;               /* los puntos van debajo del nombre */
+    }
+    .perfil-container {
+      flex: 1;                      /* el perfil ocupa el resto, más que la lista */
+      min-width: 0;
+      padding: 12px;
+      font-size: 0.9em;
+      word-break: break-word;
+    }
+    .perfil-container h2 {
+      font-size: 1.2em;
     }
   }
 </style>
